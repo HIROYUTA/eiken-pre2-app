@@ -1,0 +1,41 @@
+{
+  "name": "英検準2級 AI合格アプリ",
+  "short_name": "英検準2級",
+  "description": "AIが徹底的にサポートする英検準2級合格アプリ",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#007AFF",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "productivity"],
+  "shortcuts": [
+    {
+      "name": "単語学習",
+      "short_name": "単語",
+      "description": "単語学習を始める",
+      "url": "/dashboard/words",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "模試",
+      "short_name": "模試",
+      "description": "模試を受ける",
+      "url": "/dashboard/mock-exam",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
