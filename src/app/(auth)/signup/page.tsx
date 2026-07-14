@@ -12,7 +12,7 @@ import { Input } from '@/components/ui/input'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { useAuthStore } from '@/stores/authStore'
 import { useUIStore } from '@/stores/uiStore'
-import { localSignup, saveUserData } from '@/lib/auth/localAuth'
+import { localSignup } from '@/lib/auth/localAuth'
 
 export default function SignupPage() {
   const router = useRouter()
@@ -43,9 +43,6 @@ export default function SignupPage() {
 
     try {
       const user = await localSignup(email, password, displayName)
-
-      // ユーザーデータを保存
-      saveUserData(email, password, user)
 
       setUser(user)
       addToast('アカウントを作成しました！', 'success')

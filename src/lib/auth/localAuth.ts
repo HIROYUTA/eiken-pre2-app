@@ -75,9 +75,13 @@ export async function localSignup(email: string, password: string, displayName: 
     throw new Error('パスワードは8文字以上である必要があります')
   }
 
-  // 既存ユーザーチェック
-  const auth = getLocalAuth()
-  if (auth.user?.email === email) {
+  if (typeof window === 'undefined') {
+    throw new Error('クライアントサイドでのみ登録できます')
+  }
+
+  // 既存ユーザーチェック - メールアドレスごとのストレージを確認
+  const existingUser = localStorage.getItem(`eiken_user_${email}`)
+  if (existingUser) {
     throw new Error('このメールアドレスは既に登録されています')
   }
 
@@ -95,6 +99,10 @@ export async function localSignup(email: string, password: string, displayName: 
     updated_at: new Date().toISOString(),
   }
 
+  // ユーザーデータを保存（パスワード付き）
+  saveUserData(email, password, newUser)
+
+  // ログイン状態も設定
   setLocalAuth(newUser)
 
   return newUser
